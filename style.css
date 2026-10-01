@@ -1,0 +1,407 @@
+/* ==========================================================================
+   Password Strength Validator - CSS Styles
+   College CIA Part-B Project | Case Study 11
+   Style: Minimal, Clean, Professional College Project Design
+   ========================================================================== */
+
+/* --- CSS Reset & Base Variables --- */
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --accent-blue: #2563eb;
+    --accent-blue-hover: #1d4ed8;
+    
+    /* Green colors for satisfied / valid states */
+    --green-dark: #166534;
+    --green-border: #bbf7d0;
+    --green-bg: #f0fdf4;
+    
+    /* Neutral / Warning colors for invalid states */
+    --neutral-border: #cbd5e1;
+    --invalid-border: #fed7aa;
+    --invalid-bg: #fffbe6;
+    --invalid-text: #9a3412;
+
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    padding: 24px 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Container Layout --- */
+.container {
+    max-width: 740px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Header Section --- */
+.header {
+    text-align: center;
+    padding: 12px 0;
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+}
+
+.header .subtitle {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin-bottom: 8px;
+}
+
+.header .description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* --- Card Styles --- */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.card h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+/* --- Input Section --- */
+.input-label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.input-wrapper input {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.btn-toggle {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    background-color: #ffffff;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-toggle:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.privacy-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 10px;
+}
+
+/* --- Password Requirements Checklist --- */
+.checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    transition: color 0.15s ease;
+}
+
+.status-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: bold;
+    user-select: none;
+}
+
+/* Satisfied state for checklist items */
+.check-item.satisfied {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.check-item.satisfied .status-icon {
+    color: var(--green-dark);
+}
+
+/* --- Result Card --- */
+.result-card {
+    border-radius: 8px;
+    padding: 18px 24px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.result-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.result-subtext {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* State: Initial (empty input) */
+.result-card.state-initial {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+}
+
+.result-card.state-initial .result-heading {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* State: Valid (Strong Password) */
+.result-card.state-valid {
+    background-color: var(--green-bg);
+    border: 1px solid var(--green-border);
+}
+
+.result-card.state-valid .result-heading {
+    color: var(--green-dark);
+}
+
+.result-card.state-valid .result-subtext {
+    color: #14532d;
+}
+
+/* State: Invalid (Requirements missing) */
+.result-card.state-invalid {
+    background-color: var(--invalid-bg);
+    border: 1px solid var(--invalid-border);
+}
+
+.result-card.state-invalid .result-heading {
+    color: var(--invalid-text);
+}
+
+.result-card.state-invalid .result-subtext {
+    color: #7c2d12;
+}
+
+/* --- Test Case Demonstration Section --- */
+.demo-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-demo {
+    padding: 9px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: #ffffff;
+    border: 1px solid var(--accent-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-blue-hover);
+    border-color: var(--accent-blue-hover);
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.test-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.test-table th {
+    background-color: #f1f5f9;
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.test-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    color: var(--text-primary);
+}
+
+.test-table code {
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    background-color: #f1f5f9;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #0f172a;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+.badge-strong {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.badge-weak {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.btn-table-try {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--accent-blue);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-table-try:hover {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+/* --- About Project Section --- */
+.about-card p {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.tech-stack {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0 !important;
+}
+
+/* --- Footer Section --- */
+.footer {
+    text-align: center;
+    padding: 16px 0 8px 0;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 8px;
+}
+
+.footer-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.footer-subtitle {
+    font-size: 0.84rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    body {
+        padding: 16px 12px;
+    }
+    
+    .card {
+        padding: 18px 16px;
+    }
+    
+    .demo-actions {
+        flex-direction: column;
+    }
+    
+    .btn-demo {
+        width: 100%;
+    }
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Validator | CIA Part-B</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Centered Container -->
+    <main class="container">
+        
+        <!-- HEADER SECTION -->
+        <header class="header">
+            <h1>Password Strength Validator</h1>
+            <p class="subtitle">Using Regular Expressions</p>
+            <p class="description">Check whether your password satisfies the defined security requirements.</p>
+        </header>
+
+        <!-- PASSWORD INPUT SECTION -->
+        <section class="card input-card">
+            <label for="passwordInput" class="input-label">Enter Password</label>
+            <div class="input-wrapper">
+                <input 
+                    type="password" 
+                    id="passwordInput" 
+                    placeholder="Enter your password" 
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <button type="button" id="togglePasswordBtn" class="btn-toggle" aria-label="Toggle password visibility">Show</button>
+            </div>
+            <p class="privacy-note">Your password is checked locally and is not stored.</p>
+        </section>
+
+        <!-- PASSWORD REQUIREMENTS SECTION -->
+        <section class="card requirements-card">
+            <h2>Password Requirements</h2>
+            <ul class="checklist" id="checklist">
+                <li id="req-length" class="check-item">
+                    <span class="status-icon" aria-hidden="true">○</span>
+                    <span class="req-text">At least 8 characters</span>
+                </li>
+                <li id="req-uppercase" class="check-item">
+                    <span class="status-icon" aria-hidden="true">○</span>
+                    <span class="req-text">At least one uppercase letter (A-Z)</span>
+                </li>
+                <li id="req-lowercase" class="check-item">
+                    <span class="status-icon" aria-hidden="true">○</span>
+                    <span class="req-text">At least one lowercase letter (a-z)</span>
+                </li>
+                <li id="req-number" class="check-item">
+                    <span class="status-icon" aria-hidden="true">○</span>
+                    <span class="req-text">At least one number (0-9)</span>
+                </li>
+                <li id="req-special" class="check-item">
+                    <span class="status-icon" aria-hidden="true">○</span>
+                    <span class="req-text">At least one special character (!@#$%^&*)</span>
+                </li>
+                <li id="req-whitespace" class="check-item">
+                    <span class="status-icon" aria-hidden="true">○</span>
+                    <span class="req-text">No whitespace</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- RESULT SECTION -->
+        <section class="card result-card state-initial" id="resultCard">
+            <h3 id="resultHeading" class="result-heading">Enter a password to check</h3>
+            <p id="resultSubtext" class="result-subtext"></p>
+        </section>
+
+        <!-- DEMONSTRATION / TEST CASE SECTION -->
+        <section class="card demo-card">
+            <h2>Example Test Cases</h2>
+            <div class="demo-actions">
+                <button type="button" id="btnTestStrong" class="btn-demo btn-primary">Test Strong Password</button>
+                <button type="button" id="btnTestWeak" class="btn-demo btn-secondary">Test Weak Password</button>
+            </div>
+
+            <div class="table-container">
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Password</th>
+                            <th>Result</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Abcd@123</code></td>
+                            <td><span class="badge badge-strong">Strong Password</span></td>
+                            <td><button type="button" class="btn-table-try" data-password="Abcd@123">Try</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>abcdefg1@</code></td>
+                            <td><span class="badge badge-weak">Uppercase missing</span></td>
+                            <td><button type="button" class="btn-table-try" data-password="abcdefg1@">Try</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>ABCDEFG1@</code></td>
+                            <td><span class="badge badge-weak">Lowercase missing</span></td>
+                            <td><button type="button" class="btn-table-try" data-password="ABCDEFG1@">Try</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>Abcdefgh@</code></td>
+                            <td><span class="badge badge-weak">Number missing</span></td>
+                            <td><button type="button" class="btn-table-try" data-password="Abcdefgh@">Try</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>Abcdefg1</code></td>
+                            <td><span class="badge badge-weak">Special character missing</span></td>
+                            <td><button type="button" class="btn-table-try" data-password="Abcdefg1">Try</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>Abcd 123@</code></td>
+                            <td><span class="badge badge-weak">Whitespace detected</span></td>
+                            <td><button type="button" class="btn-table-try" data-password="Abcd 123@">Try</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ABOUT PROJECT SECTION -->
+        <section class="card about-card">
+            <h2>About This Project</h2>
+            <p>This project demonstrates password-policy validation using JavaScript and Regular Expressions. Each password requirement is checked independently and meaningful feedback is provided to the user.</p>
+            <p class="tech-stack"><strong>Technology:</strong> HTML • CSS • JavaScript • Regular Expressions</p>
+        </section>
+
+        <!-- FOOTER SECTION -->
+        <footer class="footer">
+            <p class="footer-title">CIA Part-B | Case Study 11</p>
+            <p class="footer-subtitle">Password Strength Validator using Regular Expressions</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
